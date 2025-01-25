@@ -4,15 +4,8 @@ import jwt from 'jsonwebtoken'
 const authUser = async (req, res, next) => {
 
 
-    const authHeader = req.headers.authorization;
-    // Check if the Authorization header is present and starts with "Bearer "
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-        return res.status(401).json({ success: false, message: 'Not Authorized. Token is missing.' });
-      }
-  
-      // Extract the token (everything after "Bearer ")
-    const token = authHeader.split(' ')[1];
-  
+    const { token } = req.headers;
+
     if (!token) {
         return res.json({ success: false, message: 'Not Authorized Login Again' })
     }

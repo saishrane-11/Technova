@@ -3,6 +3,7 @@ import validator from "validator";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
+
 const createToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET)
 }
@@ -41,7 +42,7 @@ const registerUser = async (req, res) => {
     try {
 
         const { name, email, password } = req.body;
-        console.log(name,email,password);
+
         const exists = await userModel.findOne({ email })
         if (exists) {
             return res.json({ success: false, message: 'user Already exists' })
@@ -96,4 +97,4 @@ res.json({success:false,message:"Invalid Credentials"})
 }
 
 
-export { loginUser, registerUser, adminLogin}
+export { loginUser, registerUser, adminLogin }

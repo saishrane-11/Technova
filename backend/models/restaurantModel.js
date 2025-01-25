@@ -39,13 +39,10 @@ const restaurantSchema = new mongoose.Schema({
         {
             user: {
                 type: mongoose.Schema.ObjectId,
-                ref: "User",
+                ref: "user",
                 required: true,
             },
-            name: {
-                type: String,
-                required: true,
-            },
+           
             rating: {
                 type: Number,
                 required: true,
